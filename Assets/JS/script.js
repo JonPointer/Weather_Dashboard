@@ -56,8 +56,12 @@ function getWeather(requestLonLatUrl) {
         })
         .then(function (data) {
             console.log(data);
-            var myLon = data.data[0].longitude;
-            var myLat = data.data[0].latitude;
+            // var myLon = data.data[0].longitude;
+            // var myLat = data.data[0].latitude;
+
+            var myLon = data.results[0].geometry.lng;
+            var myLat = data.results[0].geometry.lat;
+
             console.log(myLon, myLat);
             var requestUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + myLat + '&lon=' + myLon + '&exclude=minutely,hourly&units=imperial&appid=dab01b8bddbfbb7b2a1f2c1e8f59e186';
             fetch(requestUrl)
@@ -83,7 +87,12 @@ function getWeather(requestLonLatUrl) {
 }
 
 var city = prompt("Enter City");
-var requestLonLatUrl = "http://api.positionstack.com/v1/forward?access_key=f0859cfa66e6e18465547266ac22d22d&query=" + city;
+
+var requestLonLatUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=ee5b200caf5e4e0c89120f545016875d"
+
+// var requestLonLatUrl = "http://api.positionstack.com/v1/forward?access_key=f0859cfa66e6e18465547266ac22d22d&query=" + city;
+
+
 getWeather(requestLonLatUrl);
 
 
