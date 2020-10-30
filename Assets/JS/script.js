@@ -77,7 +77,7 @@ function getWeather(requestLonLatUrl) {
                         console.log(dateString);
                         var myIcon = data.daily[i].weather[0].icon;
                         console.log(myIcon);
-                        $("h1").append("<img src='http://openweathermap.org/img/wn/" + myIcon + "@2x.png'></img>");
+                        $("h1").append("<img src='https://openweathermap.org/img/wn/" + myIcon + "@2x.png'></img>");
 
                     }
 
