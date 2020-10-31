@@ -1,53 +1,4 @@
-// var requestUrl = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=dab01b8bddbfbb7b2a1f2c1e8f59e186';
 
-// var requestUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=Denver&appid=dab01b8bddbfbb7b2a1f2c1e8f59e186';
-
-
-// api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-
-// api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
-
-
-
-// lat: 39.7392, lon: -104.9847}
-
-
-// function getApi(requestUrl) {
-// fetch(requestUrl)
-//     .then(function (response) {
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         console.log(data);
-//         for (i = 0; i < 5; i++) {
-//             var myDate = new Date(data.daily[i].dt * 1000);
-//             console.log("Date: " + myDate);
-//             var dateString = myDate.toLocaleDateString();
-//             console.log(dateString);
-//             var myIcon = data.daily[i].weather[0].icon;
-//             console.log(myIcon);
-//             $("h1").append("<img src='http://openweathermap.org/img/wn/" + myIcon + "@2x.png'></img>");
-
-//         }
-
-//     });
-// }
-
-
-// var requestUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=39.7392&lon=-104.9847&exclude=minutely,hourly&units=imperial&appid=dab01b8bddbfbb7b2a1f2c1e8f59e186';
-
-// function getLonLat(requestLonLatUrl) {
-//     fetch(requestLonLatUrl)
-//         .then(function (response) {
-//             return response.json();
-//         })
-//         .then(function (data) {
-//             console.log(data);
-//             myLon = data.data[0].longitude;
-//             myLat = data.data[0].latitude;
-//             console.log(myLon, myLat);
-//         });
-// }
 
 function getWeather(requestLonLatUrl) {
     fetch(requestLonLatUrl)
@@ -56,14 +7,14 @@ function getWeather(requestLonLatUrl) {
         })
         .then(function (data) {
             console.log(data);
-            // var myLon = data.data[0].longitude;
-            // var myLat = data.data[0].latitude;
 
             var myLon = data.results[0].geometry.lng;
             var myLat = data.results[0].geometry.lat;
 
             console.log(myLon, myLat);
             var requestUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + myLat + '&lon=' + myLon + '&exclude=minutely,hourly&units=imperial&appid=dab01b8bddbfbb7b2a1f2c1e8f59e186';
+
+
             fetch(requestUrl)
                 .then(function (response) {
                     return response.json();
@@ -86,19 +37,10 @@ function getWeather(requestLonLatUrl) {
         });
 }
 
-var city = prompt("Enter City");
+// var city = prompt("Enter City");
 
-var requestLonLatUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=ee5b200caf5e4e0c89120f545016875d"
+// var requestLonLatUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=ee5b200caf5e4e0c89120f545016875d"
 
-// var requestLonLatUrl = "http://api.positionstack.com/v1/forward?access_key=f0859cfa66e6e18465547266ac22d22d&query=" + city;
+// getWeather(requestLonLatUrl);
 
-
-getWeather(requestLonLatUrl);
-
-
-
-
-
-
-
-    // getApi(requestUrl);
+// UV Index 0-2 = Low (green) 3-7 Moderate (yellow)  8+ High (red)  per https://www.epa.gov/sunsafety/uv-index-scale-0
