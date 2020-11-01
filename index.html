@@ -12,65 +12,68 @@
 </head>
 
 <body>
+    <!-- Container for the header containing the Weather Dashboard title  -->
     <header class="container-fluid bg-dark text-white">
         <h1 class="text-center p-3">Weather Dashboard</h1>
     </header>
+    <!-- Container for the lower section - cities on the left and weather on the right   -->
     <section class="container-fluid">
         <div class="row">
+            <!-- Left section for city search and list of past cities entered  -->
             <aside class="col-md-3 bg-light">
+                <!-- City search area  -->
                 <h3>Search for a City:</h3>
-
-
                 <form class="form-inline">
-                    <label class="sr-only" for="inlineFormInputName2">Name</label>
-
+                    <!-- <label class="sr-only" for="inlineFormInputName2">Name</label> -->
+                    <!-- Input text and search button for desired city -->
                     <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="City">
-
-                    <button type="submit" class="btn btn-primary mb-2"><i class="fas fa-search"></i></button>
+                    <button type="submit" class="btn btn-primary mb-2" id="searchButton"><i
+                            class="fas fa-search"></i></button>
                 </form>
-
+                <!-- Card for list of saved cities  -->
                 <div class="card mb-4">
                     <div class="card-header">
                         <h5>Saved Cities</h5>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">...</li>
-                        <li class="list-group-item">...</li>
-                        <li class="list-group-item">...</li>
-                        <li class="list-group-item">...</li>
-                        <li class="list-group-item">...</li>
-                        <li class="list-group-item">...</li>
-                        <li class="list-group-item">...</li>
-                        <li class="list-group-item">...</li>
-                        <li class="list-group-item">...</li>
-                        <li class="list-group-item">...</li>
+                    <!-- Unordered list of cities.  Will need to append to this list  -->
+                    <ul class="list-group list-group-flush" id="cityList">
+                        <!-- <li class="list-group-item"><button type="button" class="btn btn-light w-100 text-left">City
+                                Name</button></li> -->
                     </ul>
                 </div>
-
-
-
             </aside>
+            <!-- Right section for display of current weather and forecast  -->
             <section class="col-md-9">
+                <!-- Top section of current weather items  -->
                 <article class="card mt-2 mb-4 pt-2 pb-5">
                     <div class="card-body">
-                        <h2 class="card-title mb-4">City String</h2>
-                        <p class="card-text">Temperature: </p>
-                        <p class="card-text">Humidity: </p>
-                        <p class="card-text">Wind Speed: </p>
-                        <p class="card-text">UV Index: </p>
+                        <!-- Current weather items.  Span texts to be replaced with API results -->
+                        <h2 class="card-title mb-4" id="cityString">City String</h2>
+                        <h5 class="card-text">Temperature: <span id="temperature">0</span></h5>
+                        <h5 class="card-text">Humidity: <span id="humidity">0</span></h5>
+                        <h5 class="card-text">Wind Speed: <span id="windSpeed">0</span></h5>
+                        <!-- For UV Index the entire h5 content will be replaced to also set badge color -->
+                        <h5 class="card-text" id="uvIndex">UV Index: <span class="badge badge-secondary badge-success">
+                                <h5>2</h5>
+                            </span></h5>
                     </div>
                 </article>
+                <!-- Bottom section with 5-Day forecast  -->
                 <article>
                     <h2>5-Day Forecast:</h2>
                     <div class="row">
+                        <!-- New row for cards - now the same card is repeated 5 times - with unique IDs for identifying entries -->
                         <article class="card col-lg m-2 pl-1 bg-primary text-white">
                             <div class="card-body">
-                                <h3 class="card-title mb-4">Date</h3>
-                                <p class="card-text">Symbol</p>
-                                <p class="card-text">Temp: </p>
-                                <p class="card-text">Humidity: </p>
+                                <h3 class="card-title mb-4" id="day1Date">Date</h3>
+                                <p class="card-text" id="day1Symbol">Symbol</p>
+                                <p class="card-text" id="day1Temp">Temp: </p>
+                                <p class="card-text" id="day1Humidity">Humidity: </p>
                             </div>
                         </article>
+
+                        <!-- POSSIBLY BUILD THIS ENTIRE SECTION IN JS  -->
+
                         <article class="card col-lg m-2 pl-1 bg-primary text-white">
                             <div class="card-body">
                                 <h3 class="card-title mb-4">Date</h3>
