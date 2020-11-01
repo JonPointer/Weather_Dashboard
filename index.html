@@ -48,93 +48,26 @@
                 <article class="card mt-2 mb-4 pt-2 pb-5">
                     <div class="card-body">
                         <!-- Current weather items.  Span texts to be replaced with API results -->
-                        <h2 class="card-title mb-4" id="cityString">City String</h2>
-                        <h5 class="card-text">Temperature: <span id="temperature">0</span></h5>
-                        <h5 class="card-text">Humidity: <span id="humidity">0</span></h5>
-                        <h5 class="card-text">Wind Speed: <span id="windSpeed">0</span></h5>
+                        <h2 class="card-title mb-4" id="cityString">City...</h2>
+                        <h5 class="card-text">Temperature: <span id="temperature">0</span><span> &#176;F</span></h5>
+                        <h5 class="card-text">Humidity: <span id="humidity">0</span><span> %</span></h5>
+                        <h5 class="card-text">Wind Speed: <span id="windSpeed">0</span><span> MPH</span></h5>
                         <!-- For UV Index the entire h5 content will be replaced to also set badge color -->
                         <h5 class="card-text" id="uvIndex">UV Index: <span class="badge badge-secondary badge-success">
-                                <h5>2</h5>
+                                <h5>0</h5>
                             </span></h5>
                     </div>
                 </article>
                 <!-- Bottom section with 5-Day forecast  -->
                 <article>
                     <h2>5-Day Forecast:</h2>
-                    <div class="row">
-                        <!-- New row for cards - now the same card is repeated 5 times - with unique IDs for identifying entries -->
-                        <article class="card col-lg m-2 pl-1 bg-primary text-white">
-                            <div class="card-body">
-                                <h3 class="card-title mb-4" id="day1Date">Date</h3>
-                                <p class="card-text" id="day1Symbol">Symbol</p>
-                                <p class="card-text" id="day1Temp">Temp: </p>
-                                <p class="card-text" id="day1Humidity">Humidity: </p>
-                            </div>
-                        </article>
-
-                        <!-- POSSIBLY BUILD THIS ENTIRE SECTION IN JS  -->
-
-                        <article class="card col-lg m-2 pl-1 bg-primary text-white">
-                            <div class="card-body">
-                                <h3 class="card-title mb-4">Date</h3>
-                                <p class="card-text">Symbol</p>
-                                <p class="card-text">Temp: </p>
-                                <p class="card-text">Humidity: </p>
-                            </div>
-                        </article>
-                        <article class="card col-lg m-2 pl-1 bg-primary text-white">
-                            <div class="card-body">
-                                <h3 class="card-title mb-4">Date</h3>
-                                <p class="card-text">Symbol</p>
-                                <p class="card-text">Temp: </p>
-                                <p class="card-text">Humidity: </p>
-                            </div>
-                        </article>
-                        <article class="card col-lg m-2 pl-1 bg-primary text-white">
-                            <div class="card-body">
-                                <h3 class="card-title mb-4">Date</h3>
-                                <p class="card-text">Symbol</p>
-                                <p class="card-text">Temp: </p>
-                                <p class="card-text">Humidity: </p>
-                            </div>
-                        </article>
-                        <article class="card col-lg m-2 pl-1 bg-primary text-white">
-                            <div class="card-body">
-                                <h3 class="card-title mb-4">Date</h3>
-                                <p class="card-text">Symbol</p>
-                                <p class="card-text">Temp: </p>
-                                <p class="card-text">Humidity: </p>
-                            </div>
-                        </article>
+                    <div class="row" id="fiveDay">
+                        <!-- Section for displaying five day forecast cards - built in JavaScript  -->
                     </div>
                 </article>
-
-
-
-
-
-
             </section>
-
-
         </div>
-
-
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script src="./Assets/JS/script.js"></script>
 </body>
 

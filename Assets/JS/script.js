@@ -25,22 +25,39 @@ function getWeather(requestLonLatUrl) {
                     var todaysDate = new Date();
                     var todaysDateString = todaysDate.toLocaleDateString();
                     var currentIcon = data.current.weather[0].icon;
-                    var currentIconImage = "<img src='https://openweathermap.org/img/wn/" + currentIcon + "@2x.png'></img>"
+                    var currentIconImage = "<img src='https://openweathermap.org/img/wn/" + currentIcon + "@2x.png' width='60'></img>"
                     cityString = city + " (" + todaysDateString + ") ";
-                    // $("#cityString").val(cityString);
                     $("#cityString").text(cityString);
                     $(currentIconImage).appendTo("#cityString");
-                    // for (i = 0; i < 5; i++) {
-                    //     var myDate = new Date(data.daily[i].dt * 1000);
-                    //     console.log("Date: " + myDate);
-                    //     var dateString = myDate.toLocaleDateString();
-                    //     console.log(dateString);
-                    //     var myIcon = data.daily[i].weather[0].icon;
-                    //     console.log(myIcon);
-                    // $("h1").append("<img src='https://openweathermap.org/img/wn/" + myIcon + "@2x.png'></img>");
-                    // $("h1").append("<p>" + cityString + "</p>");
+                    // Now fill in current weather values
+                    $("#temperature").text(data.current.temp.toString());
+                    $("#humidity").text(data.current.humidity.toString());
+                    $("#windSpeed").text(data.current.wind_speed.toString());
+                    // And the UV Index, color coded per the following:
+                    // UV Index 0-2 = Low (green) 3-7 Moderate (yellow)  8+ High (red)  per https://www.epa.gov/sunsafety/uv-index-scale-0
+                    var UVI = data.current.uvi;
+                    if (UVI <= 2) {
+                        $("#uvIndex").html("UV Index: <span class='badge badge-secondary badge-success'><h5>" + UVI.toString() + "</h5></span>");
+                    } else if (UVI <= 7) {
+                        $("#uvIndex").html("UV Index: <span class='badge badge-secondary badge-warning'><h5>" + UVI.toString() + "</h5></span>");
+                    } else {
+                        $("#uvIndex").html("UV Index: <span class='badge badge-secondary badge-danger'><h5>" + UVI.toString() + "</h5></span>");
+                    }
+                    // Fist, clear any previous cards
+                    $("#fiveDay").empty();
+                    // Now build the 5-Day forecast cards in a loop
+                    for (i = 0; i < 5; i++) {
+                        // First build the needed variables
+                        var myDate = new Date(data.daily[i].dt * 1000);
+                        var dateString = myDate.toLocaleDateString();
+                        var myIcon = data.daily[i].weather[0].icon;
+                        var currentIconImage = "<img src='https://openweathermap.org/img/wn/" + myIcon + "@2x.png' width='60'></img>"
+                        var temperature = data.daily[i].temp.day.toString();
+                        var humidity = data.daily[i].humidity.toString();
+                        // Now build and append the card
+                        $("#fiveDay").append("<article class='card col-lg m-2 pl-1 bg-primary text-white'><div class='card-body'><h3 class='card-title mb-4'>" + dateString + "</h3><p class='card-text'>" + currentIconImage + "</p><p class='card-text'>Temp: " + temperature + " &#176;F</p><p class='card-text'>Humidity: " + humidity + " %</p></div></article>");
 
-                    // }
+                    }
 
                 });
 
@@ -120,4 +137,3 @@ var cityList = [];
 // Check local storage for an existing city list
 checkCityList();
 
-// UV Index 0-2 = Low (green) 3-7 Moderate (yellow)  8+ High (red)  per https://www.epa.gov/sunsafety/uv-index-scale-0
