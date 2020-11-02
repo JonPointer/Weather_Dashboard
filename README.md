@@ -34,4 +34,4 @@ The application functions well and also looks good on all formats from large scr
 
 ### Screenshot of the completed application
 
-![Weather Dashboard Screenshot](./Assets/images/ScreenShot.PNG)
+![Weather Dashboard Screenshot](./Assets/images/ScreenShot2.PNG)
