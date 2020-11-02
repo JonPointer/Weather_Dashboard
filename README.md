@@ -4,7 +4,7 @@ DU Full Stack HW 06 Server-Side APIs: Weather Dashboard
 
 ## Introduction
 
-For this assignment we were to create a Weather Dashboard where the user could input a city and then the current weather and 5-day forecast for that city would be displayed. In addition, the application should display a list of the previous cities entered and save that list in local memory. The user should be able to select from that list to display the weather for that city again.
+For this assignment we were to create a Weather Dashboard where the user could input a city and then the current weather and 5-day forecast for that city would be displayed. In addition, the application should display a list of the previous cities entered and save that list in local storage. The user should be able to select from that list to display the weather for that city again.
 
 ## Approach
 
