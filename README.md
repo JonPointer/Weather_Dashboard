@@ -4,30 +4,28 @@ DU Full Stack HW 06 Server-Side APIs: Weather Dashboard
 
 ## Introduction
 
-For this assignment, the basic HTML and CSS were already provided to create a simple 9:00 to 5:00 calendar scheduler. Our task was to correctly create the time rows, time display, buttons, etc. as shown in the completed application image in the instructions.
-
-Additionally, color coding was to be determined based on the curren time, with past hours being gray, present hour being red, and future times being green.
-
-Finally, the user should be able to enter text in a time field, click that row's save button, and store their entry to local storage. The text should then be properly re-displayed when the page is refreshed.
+For this assignment we were to create a Weather Dashboard where the user could input a city and then the current weather and 5-day forecast for that city would be displayed. In addition, the application should display a list of the previous cities entered and save that list in local memory.
 
 ## Approach
 
-I chose to completely build the display and buttons with JavaScript and jQuery in a for loop, instead of creating them one by one. Additionally, on click events for each button were created in the loop utilizing this.id to pass the ID of the button to the on click function.
+Utilizing the [OpenWeather API](https://openweathermap.org/api), I wanted to use the OneCall API to get current weather and a 7-day forecast all in one call. However, this required an input of longitude and latitude instead of a city name. To obtain this, I also used the [OpenCage API](https://opencagedata.com/api) which takes a city input and can return the longitude and latitude.
 
-Also, since the display was always to be 9-5, the schedule data was stored and written to local storage as a simple array of the 9 time slots.
+Next, I was concerned that the user might input a city, but not get the actual city they were expecting - for instance, the same city name in a different state. To help catch this, at the top of the page, instead of displaying the city name entered, I displayed the city and state found by the OpenCage API. Then the user can note that they aren't seeing what they expected.
+
+Finally, though not required, I felt it would be nice for the user to be able to clean up their list - delete cities they were no longer interested in or cities that gave the wrong results. To achieve this, I added a delete button next to each item on the city list that removes that name from the list and rewrites the list.
 
 ## Results
 
-The application looks and works as instructed, successfully showing the calendar, current time dependant coloring, and saving/restoring text entries.
+The application functions well and also looks good on all formats from large screen to a phone.
 
 ### Path to GitHub Repository
 
-<https://github.com/JonPointer/DUFS_Homework_05_Work_Day_Scheduler>
+<https://github.com/JonPointer/Weather_Dashboard>
 
 ### Path to GitHub Hosted Application
 
-<https://jonpointer.github.io/DUFS_Homework_05_Work_Day_Scheduler/>
+<https://jonpointer.github.io/Weather_Dashboard/>
 
 ### Screenshot of the completed application
 
-![Scheduler Screenshot](./Assets/images/Screen-Capture-Work-Day-Scheduler.png)
+![Weather Dashboard Screenshot](./Assets/images/ScreenShot.PNG)
