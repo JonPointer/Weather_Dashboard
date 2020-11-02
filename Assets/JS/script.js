@@ -12,7 +12,7 @@ function getWeather(requestLonLatUrl) {
             var myLon = dataLL.results[0].geometry.lng;
             var myLat = dataLL.results[0].geometry.lat;
             // Build API URL for getting the weather at this longitude and latitude
-            var requestUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + myLat + '&lon=' + myLon + '&exclude=minutely,hourly&units=imperial&appid=dab01b8bddbfbb7b2a1f2c1e8f59e186';
+            var requestUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + myLat + '&lon=' + myLon + '&exclude=minutely,hourly&units=imperial&appid=' + process.env.APIKEY;
             // Now, fetch the weather for that location
             fetch(requestUrl)
                 .then(function (response) {
