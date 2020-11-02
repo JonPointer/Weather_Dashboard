@@ -7,7 +7,7 @@ function getWeather(requestLonLatUrl) {
             return response.json();
         })
         .then(function (dataLL) {
-            console.log(dataLL);
+            // console.log(dataLL);
             // Grab longitude and latitude from returned data
             var myLon = dataLL.results[0].geometry.lng;
             var myLat = dataLL.results[0].geometry.lat;
@@ -19,7 +19,7 @@ function getWeather(requestLonLatUrl) {
                     return response.json();
                 })
                 .then(function (data) {
-                    console.log(data);
+                    // console.log(data);
                     // Now utilize returned data to update city name, date, weather symbol, and current weather items at the top of the screen
                     // First, the cityString at the top of the page
                     var todaysDate = new Date();
