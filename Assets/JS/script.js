@@ -77,12 +77,6 @@ function displayCityList() {
         // $("#cityList").append("<li class='list-group-item'><button type='button' class='btn btn-light w-100 text-left' id=" + buttonString + ">" + cityList[i] + "</button></li>");
         $("#cityList").append("<li class='list-group-item'><button type='button' class='btn btn-light text-left w-75' id=" + buttonString + ">" + cityList[i] + "</button>  <button type='submit' class='btn btn-warning btn-small' id=" + delButtonString + "><i class='fas fa-times'></i></button></li>");
 
-        // Adding a button to delete this city from the list
-
-
-
-
-
         // Now create an on click event for this button
         buttonJQName = "#".concat(buttonString);
         $(buttonJQName).on('click', function () {
@@ -91,7 +85,6 @@ function displayCityList() {
             var requestLonLatUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=ee5b200caf5e4e0c89120f545016875d"
             getWeather(requestLonLatUrl);
         });
-
         // And now add an on click for the delete button
         delButtonJQName = "#".concat(delButtonString);
         $(delButtonJQName).on('click', function () {
@@ -100,8 +93,6 @@ function displayCityList() {
             localStorage.setItem("cityList", JSON.stringify(cityList));
             displayCityList();
         });
-
-
     }
 }
 
