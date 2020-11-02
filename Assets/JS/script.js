@@ -12,7 +12,7 @@ function getWeather(requestLonLatUrl) {
             var myLon = dataLL.results[0].geometry.lng;
             var myLat = dataLL.results[0].geometry.lat;
             // Build API URL for getting the weather at this longitude and latitude
-            var requestUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + myLat + '&lon=' + myLon + '&exclude=minutely,hourly&units=imperial&appid=' + process.env.APIKEY;
+            var requestUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + myLat + '&lon=' + myLon + '&exclude=minutely,hourly&units=imperial&appid=dab01b8bddbfbb7b2a1f2c1e8f59e186';
             // Now, fetch the weather for that location
             fetch(requestUrl)
                 .then(function (response) {
@@ -26,7 +26,8 @@ function getWeather(requestLonLatUrl) {
                     var todaysDateString = todaysDate.toLocaleDateString();
                     var currentIcon = data.current.weather[0].icon;
                     var currentIconImage = "<img src='https://openweathermap.org/img/wn/" + currentIcon + "@2x.png' width='60'></img>"
-                    cityString = city + " (" + todaysDateString + ") ";
+                    // Instead of using city variable, use the actual city and state the first API found
+                    cityString = dataLL.results[0].components.city + ", " + dataLL.results[0].components.state_code + " (" + todaysDateString + ") ";
                     $("#cityString").text(cityString);
                     $(currentIconImage).appendTo("#cityString");
                     // Now fill in current weather values
@@ -121,7 +122,8 @@ $("#searchButton").click(function (e) {
     // Update the list of cities with this entry
     upDateCityList(city);
     // Change the form back to the default "City" value
-    $("#inlineFormInputName2").val("City");
+    $("#inlineFormInputName2").val("");
+    // $("#inlineFormInputName2").empty();
     // Set the API URL for locating the Longitude and Latitude from the city name
     var requestLonLatUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=ee5b200caf5e4e0c89120f545016875d"
     // Call the get weather function
